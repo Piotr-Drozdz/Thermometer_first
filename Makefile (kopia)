@@ -1,0 +1,30 @@
+PROJECT=test
+SOURCES=term_test.cc
+
+F_CPU=1000000L
+
+CC=avr-gcc
+CXX=avr-g++
+CFLAGS=-mmcu=atmega32 -Wall -O2 -DF_CPU=$(F_CPU) -gstabs
+CXXFLAGS=$(CFLAGS)
+LDFLAGS=-mmcu=atmega32 -O2 -DF_CPU=$(F_CPU)
+OBJECTS=$(SOURCES:.cc=.o)
+OBJCOPY=avr-objcopy
+AVRPROG=avrdude -p m8 -c usbasp -e 
+
+%.hex: $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $(PROJECT)
+	$(OBJCOPY) -O ihex $(PROJECT) $@
+
+.PHONY: all
+all: $(SOURCES) $(PROJECT).hex
+
+.PHONY: upload
+upload:	$(PROJECT).hex
+	$(AVRPROG) -U flash:w:$(PROJECT).hex
+
+.PHONY: clean
+clean:
+	rm -f *.hex *.o $(PROJECT)
+
+.SECONDARY: $(OBJECTS)
