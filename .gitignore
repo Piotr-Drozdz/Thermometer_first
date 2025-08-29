@@ -1,0 +1,14 @@
+# Backup files
+*~
+
+# Object files
+*.o
+
+# Hex / bin files
+*.hex
+
+# Preprocessed files
+*.i
+
+# Makefile backup
+Makefile (kopia)
