@@ -1,9 +1,0 @@
-#include <avr/io.h>
-#include <stdlib.h>
-
-#define WE 7
-#define PORT_1wire PIND
-#define SET_1wire DDRD&=~_BV(WE)
-#define CLEAR_1wire DDRD | =_BV(WE)
-
-//char buf[8];
