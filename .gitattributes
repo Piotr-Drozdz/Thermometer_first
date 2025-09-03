@@ -1,0 +1,10 @@
+# Ensure all source files use LF line endings
+*.cc   text eol=lf
+*.h    text eol=lf
+*.i    text eol=lf
+Makefile text eol=lf
+
+# Ignore binary files (don't touch line endings)
+*.hex  binary
+*.o    binary
+
