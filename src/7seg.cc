@@ -2,7 +2,7 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-/*Pod³¹czamy
+/*Pod¿¿czamy
 PA0 - A
 PA1 - B
 PA2- C
@@ -11,15 +11,15 @@ PA4 - E
 Pa5 - F
 Pa6 - G
 
-segmenty pod³aczamy zgodnie z numeracj¹ na port c
+segmenty pod¿aczamy zgodnie z numeracj¿ na port c
 */
 int liczba[4];
-int aktulna_cyfra;
+int aktualna_cyfra;
 
 
 void inicjalizuj(){
   aktualna_cyfra = 0;
-  for(i = 0; i < 4; i++){
+  for(int i = 0; i < 4; i++){
   liczba[i] = 0;
   }
 
@@ -76,7 +76,7 @@ DDRA = 0xff;
 
 void zmien_cyfre() {
 while(true){
-	for(i = 0; i< 4; i++){
+	for(int i = 0; i< 4; i++){
 	aktualna_cyfra = liczba[i];
 	wyswietl_cyfre(aktualna_cyfra, i);
 	_delay_us(300);
