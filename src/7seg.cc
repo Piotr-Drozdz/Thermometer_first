@@ -2,22 +2,24 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-/*Pod¿¿czamy
-PA0 - A
-PA1 - B
-PA2- C
-PA3 - D
-PA4 - E
-Pa5 - F
-Pa6 - G
+/* PodÅ‚Ä…czamy
+   PA0 - A
+   PA1 - B
+   PA2 - C
+   PA3 - D
+   PA4 - E
+   PA5 - F
+   PA6 - G
 
-segmenty pod¿aczamy zgodnie z numeracj¿ na port c
+   Segmenty podÅ‚Ä…czamy zgodnie z numeracjÄ… na porcie C
 */
 int liczba[4];
 int aktualna_cyfra;
 
 
 void inicjalizuj(){
+  DDRA = 0xff;                                                                                   
+  DDRC = 0xff;
   aktualna_cyfra = 0;
   for(int i = 0; i < 4; i++){
   liczba[i] = 0;
@@ -33,7 +35,6 @@ void inicjalizuj(){
 
 
 void wyswietl_cyfre(int liczba, int pozycja) {
-DDRA = 0xff;                                                                                   
   switch(liczba) {
  
    case 0: 
@@ -68,7 +69,6 @@ DDRA = 0xff;
   break;
 	
   }
-  DDRC = 0xff;
   PORTC = ~(1 << pozycja);
   
 }
@@ -81,4 +81,6 @@ while(true){
 	wyswietl_cyfre(aktualna_cyfra, i);
 	_delay_us(300);
   
+}
+}
 }
